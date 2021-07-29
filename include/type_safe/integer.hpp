@@ -132,6 +132,13 @@ public:
     /// \exclude
     template <typename T, typename = detail::fallback_safe_integer_conversion<T, integer_type>>
     constexpr integer(const integer<T, Policy>&) = delete;
+#else
+    /// \include
+    template <typename T, typename = detail::fallback_safe_integer_conversion<T, integer_type>>
+    constexpr integer(T) = default;
+    /// \include
+    template <typename T, typename = detail::fallback_safe_integer_conversion<T, integer_type>>
+    constexpr integer(const integer<T, Policy>&) = default;
 #endif
 
     //=== assignment ===//
