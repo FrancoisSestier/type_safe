@@ -151,6 +151,15 @@ public:
     template <typename T,
               typename = detail::fallback_safe_floating_point_conversion<T, floating_point_type>>
     floating_point& operator=(const floating_point<T>&) = delete;
+#else
+    /// \exclude
+    template <typename T,
+              typename = detail::fallback_safe_floating_point_conversion<T, floating_point_type>>
+    floating_point& operator=(T) = default;
+    /// \exclude
+    template <typename T,
+              typename = detail::fallback_safe_floating_point_conversion<T, floating_point_type>>
+    floating_point& operator=(const floating_point<T>&) = default;
 #endif
 
     //=== conversion back ===//
